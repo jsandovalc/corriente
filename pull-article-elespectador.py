@@ -4,11 +4,7 @@ The idea behind this script is to make my life easier when uploading
 news to the corriente site.
 
 TODO List
-0. Get the url from params (DONE)
-1. Get the site. (DONE)
-2. Use beautiful soup. (DONE)
-3. ¿Get the OG Image? (DONE)
-4. Upload to site. (DONE)
+
 
 New things:
 
@@ -32,10 +28,11 @@ from mezzanine_client.utils import str_header, str_green
 # Initialise Mezzanine API client
 api = Mezzanine()
 published_posts = api.get_posts(offset=0, limit=10)
+# print('posts', published_posts)
+# print(published_posts[0]['categories'])
 
-print(published_posts[0]['categories'])
-print(published_posts[0]['tags'])
-print(published_posts[0]['slug'])
+# print(published_posts[0]['tags'])
+# print(published_posts[0]['slug'])
 
 # dict_keys(['id', 'user', 'publish_date', 'updated', 'title',
 # 'content', 'excerpt', 'slug', 'url', 'short_url', 'categories',
