@@ -13,6 +13,10 @@ New things:
 3. Crear como borrador desde args.
 4. Adicionar imagen a media manager.
 5. Incluir og_image adecuada desde url externa.
+6. Ask for tags.
+7. Get tags from article.
+8. List tags.
+9. Refactor.
 
 
 """
@@ -70,7 +74,7 @@ if the_og_image:
     new_post['featured_image'] = the_og_image['content']
 
 new_post['categories'] = "Artículo, Noticia"
-new_post['tags'] = 'Ciencia, Colciencias, imposturas'
+new_post['tags'] = ''
 new_post['publish_date'] = (dt.datetime.utcnow() + dt.timedelta(hours=18)).isoformat()
 new_post['allow_comments'] = True
 

@@ -4,19 +4,16 @@ The idea behind this script is to make my life easier when uploading
 news to the corriente site.
 
 TODO List
-0. Get the url from params (DONE)
-1. Get the site. (DONE)
-2. Use beautiful soup. (DONE)
-3. ¿Get the OG Image? (DONE)
-4. Upload to site. (DONE)
-
-New things:
 
 1. Include tags from args.
 2. Include categoría adecuada desde args.
 3. Crear como borrador desde args.
 4. Adicionar imagen a media manager.
 5. Incluir og_image adecuada desde url externa.
+6. Get tags from site and propose them.
+7. Ask for tags.
+8. Delete weird links.
+9. Youtube links to import.
 
 
 """
@@ -71,7 +68,7 @@ new_post['title'] = title
 new_post['content'] = f"{lead}\n\n{the_content}\n\nFuente: {link}"
 new_post['featured_image'] = the_og_image['content']
 new_post['categories'] = "Noticia"
-new_post['tags'] = 'India, violencia de género, castas'
+new_post['tags'] = ''
 new_post['publish_date'] = dt.datetime.utcnow().isoformat()
 new_post['allow_comments'] = True
 
