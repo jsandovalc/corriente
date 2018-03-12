@@ -13,10 +13,12 @@ New things:
 3. Crear como borrador desde args.
 4. Adicionar imagen a media manager.
 5. Incluir og_image adecuada desde url externa.
-6. Ask for tags.
+6. Ask for tags. (DONE)
 7. Get tags from article.
 8. List tags.
-9. Refactor.
+9. Refactor with el tiempo-script.
+10. Fix tags upload.
+11. Default category.
 
 
 """
@@ -32,19 +34,6 @@ from mezzanine_client.utils import str_header, str_green
 # Initialise Mezzanine API client
 api = Mezzanine()
 published_posts = api.get_posts(offset=0, limit=10)
-# print('posts', published_posts)
-# print(published_posts[0]['categories'])
-
-# print(published_posts[0]['tags'])
-# print(published_posts[0]['slug'])
-
-# dict_keys(['id', 'user', 'publish_date', 'updated', 'title',
-# 'content', 'excerpt', 'slug', 'url', 'short_url', 'categories',
-# 'allow_comments', 'comments_count', 'comments', 'tags',
-# 'featured_image', 'description'])
-# the title and content are required
-# the except is an abstract of the article.
-
 # end mezzanine code
 
 parser = argparse.ArgumentParser(description='Upload articule from "el tiempo".')
@@ -73,11 +62,12 @@ new_post['content'] = f"{lead}\n\n{the_content}\n\nFuente: {link}"
 if the_og_image:
     new_post['featured_image'] = the_og_image['content']
 
-new_post['categories'] = "Artículo, Noticia"
-new_post['tags'] = ''
+new_post['categories'] = input("Categories: ")
+new_post['tags'] = input('Tags: ')
 new_post['publish_date'] = (dt.datetime.utcnow() + dt.timedelta(hours=18)).isoformat()
 new_post['allow_comments'] = True
 
+print(new_post)
 response = api.create_post(new_post)
 pprint.pprint(response)
 
